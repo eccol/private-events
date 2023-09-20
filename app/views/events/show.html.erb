@@ -1,3 +1,4 @@
 <h1><%= @event.title %></h1>
+<p>Created by <%= link_to @event.creator.email, user_path(@event.creator_id) %></p>
 <p><%= @event.location %></p>
 <p><%= @event.date %></p>

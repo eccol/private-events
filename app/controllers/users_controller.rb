@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
     @user = current_user
-    @events = Event.find_by(creator_id: current_user.id)
+    @events = current_user.created_events.all
   end
 end
