@@ -74,3 +74,5 @@ end
 gem "devise", "~> 4.9"
 
 gem "bullet", "~> 7.0"
+
+gem "responders", "~> 3.1"
