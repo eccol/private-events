@@ -4,11 +4,11 @@
 <p><%= @event.date %></p>
 
 <% if @event.attendees.find_by(id: current_user.id) %>
-  <%= form_with method: :delete do |form| %>
+  <%= form_with model: @event, url: event_rsvp_path(@event, "id"), method: :delete do |form| %>
   <%= form.submit "Un-RSVP" %>
   <% end %>
 <% else %>
-  <%= form_with do |form| %>
+  <%= form_with model: @event, url: event_rsvps_path(@event), method: :post do |form| %>
   <%= form.submit "RSVP" %>
   <% end %>
 <% end %>

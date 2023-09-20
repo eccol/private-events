@@ -14,7 +14,7 @@ class RsvpsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:event_id])
-    @event.rsvps.find_by(id: current_user.id).destroy
+    @event.rsvps.find_by(user_id: current_user.id).destroy
     redirect_to @event
   end
 end
