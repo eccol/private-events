@@ -2,6 +2,20 @@
   <%= @user.email %>
 </h1>
 
-<% @events.each do |event| %>
-  <div><%= link_to event.title, event %></div>
+<h2>Created Events:</h2>
+<% if @created_events.empty? %>
+<p>None</p>
+<% else %>
+  <% @created_events.each do |event| %>
+    <div><%= link_to event.title, event %></div>
+  <% end %>
+<% end %>
+
+<h2>Attended Events:</h2>
+<% if @attended_events.empty? %>
+<p>None</p>
+<% else %>
+  <% @attended_events.each do |event| %>
+    <div><%= link_to event.title, event %></div>
+  <% end %>
 <% end %>
