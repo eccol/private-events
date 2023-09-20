@@ -2,6 +2,7 @@
 
 <%= link_to "New event", new_event_path %>
 
-<% @events.each do |event| %>
-  <div><%= link_to event.title, event %></div>
+<% @events.includes(:attendees).each do |event| %>
+  <div><%= link_to event.title, event if event.visible_to?(current_user) %></div>
 <% end %>
+

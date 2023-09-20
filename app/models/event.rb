@@ -5,4 +5,12 @@ class Event < ApplicationRecord
   
   scope :past, -> { where('date < ?', Time.now)}
   scope :future, -> { where('date > ?', Time.now)}
+
+  def visible_to?(user)
+    if user
+      !is_private || (creator_id == user.id || attendees.include?(user))
+    else
+      !is_private
+    end
+  end
 end
