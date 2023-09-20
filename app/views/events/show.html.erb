@@ -3,6 +3,7 @@
 <p><%= @event.location %></p>
 <p><%= @event.date %></p>
 
+<% if user_signed_in? %>
 <% if @event.attendees.find_by(id: current_user.id) %>
   <%= form_with model: @event, url: event_rsvp_path(@event, "id"), method: :delete do |form| %>
   <%= form.submit "Un-RSVP" %>
@@ -12,6 +13,7 @@
   <%= form.submit "RSVP" %>
   <% end %>
 <% end %>
+<% end %>
 
 <h2>Attending:</h2>
 <% if @attendees.empty? %>
@@ -20,4 +22,11 @@
   <% @attendees.each do |attendee| %>
   <div><%= link_to attendee.email, user_path(attendee.id) %></div>
   <% end %>
+<% end %>
+
+<% if user_signed_in? && current_user.id = @event.creator.id %>
+<div class="settings">
+  <h3>Settings</h3>
+  <%= link_to "Delete event", event_path, data: {turbo_method: :delete } %>
+</div>
 <% end %>
