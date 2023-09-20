@@ -24,7 +24,7 @@
   <% end %>
 <% end %>
 
-<% if user_signed_in? && current_user.id = @event.creator.id %>
+<% if user_signed_in? && current_user == @event.creator %>
 <div class="settings">
   <h3>Settings</h3>
   <div class="link"><%= link_to "Edit event", edit_event_path %></div>
