@@ -4,7 +4,9 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find_by(params[:id])
+    puts params
+    @event = Event.find(params[:id])
+    @attendees = @event.attendees
   end
 
   def new

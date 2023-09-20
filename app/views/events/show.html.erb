@@ -2,3 +2,16 @@
 <p>Created by <%= link_to @event.creator.email, user_path(@event.creator_id) %></p>
 <p><%= @event.location %></p>
 <p><%= @event.date %></p>
+
+<%= form_with do |form| %>
+<%= form.submit "RSVP" %>
+<% end %>
+
+<h2>Attending:</h2>
+<% if @attendees.empty? %>
+<p>None yet</p>
+<% else %>
+  <% @attendees.each do |attendee| %>
+  <div><%= link_to attendee.email, user_path(attendee.id) %></div>
+  <% end %>
+<% end %>

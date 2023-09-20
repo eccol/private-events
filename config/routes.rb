@@ -2,8 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:show]
   resources :events
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  post "/events/:event_id", to: "rsvps#create"
 
-  # Defines the root path route ("/")
   root "events#index"
 end
