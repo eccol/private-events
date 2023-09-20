@@ -11,11 +11,8 @@
   <% end %>
 <% end %>
 
-<h2>Attended Events:</h2>
-<% if @attended_events.empty? %>
-<p>None</p>
-<% else %>
-  <% @attended_events.each do |event| %>
-    <div><%= link_to event.title, event %></div>
-  <% end %>
-<% end %>
+<h2>Upcoming Attending Events:</h2>
+<%= render "event_list", list: @attended_events.future %>
+
+<h2>Past Attended Events:</h2>
+<%= render "event_list", list: @attended_events.past %>
