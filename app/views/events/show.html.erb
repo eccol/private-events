@@ -3,8 +3,14 @@
 <p><%= @event.location %></p>
 <p><%= @event.date %></p>
 
-<%= form_with do |form| %>
-<%= form.submit "RSVP" %>
+<% if @event.attendees.find_by(id: current_user.id) %>
+  <%= form_with method: :delete do |form| %>
+  <%= form.submit "Un-RSVP" %>
+  <% end %>
+<% else %>
+  <%= form_with do |form| %>
+  <%= form.submit "RSVP" %>
+  <% end %>
 <% end %>
 
 <h2>Attending:</h2>

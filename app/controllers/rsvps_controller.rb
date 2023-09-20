@@ -11,4 +11,10 @@ class RsvpsController < ApplicationController
       redirect_to @event
     end
   end
+
+  def destroy
+    @event = Event.find(params[:event_id])
+    @event.rsvps.find_by(id: current_user.id).destroy
+    redirect_to @event
+  end
 end
