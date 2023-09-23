@@ -5,7 +5,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    redirect_to events_path unless user_signed_in? && @event.visible_to?(current_user)
+    redirect_to events_path unless @event.visible_to?(current_user)
     @attendees = @event.attendees
   end
 
