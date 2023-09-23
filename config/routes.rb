@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'users/registrations' }
   resources :users, only: [:show]
   resources :events do
     # post "/events/:event_id/rsvp", to: "rsvps#create"
