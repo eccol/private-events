@@ -1,12 +1,12 @@
 class RsvpsController < ApplicationController
   def create
     @event = Event.find(params[:event_id])
-    if params[:email]
-      invitee = User.find_by(email: params[:email])
+    if params[:event][:email]
+      invitee = User.find_by(email: params[:event][:email])
     else
       invitee = current_user
     end
-    @rsvp = user.rsvps.build(event: @event)
+  @rsvp = invitee.nil? ? nil : invitee.rsvps.build(event: @event)
 
     if @rsvp.save
       flash[:success] = "Added!"

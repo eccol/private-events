@@ -29,7 +29,7 @@
   <h3>Settings</h3>
   <div class="field">
     <p>Invite:</p>
-    <%= form_with model: @event url: event_rsvps_path(@event), method: :post do |form| %>
+    <%= form_with model: @event, url: event_rsvps_path(@event), method: :post do |form| %>
       <%= form.text_field :email %>
       <%= form.submit "Send" %>
     <% end %>
