@@ -8,7 +8,7 @@ class RsvpsController < ApplicationController
     end
   @rsvp = invitee.nil? ? nil : invitee.rsvps.build(event: @event)
 
-    if @rsvp.save
+    if !@rsvp.nil? && @rsvp.save
       flash[:success] = "Added!"
       redirect_to @event
     else
