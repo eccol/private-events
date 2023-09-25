@@ -27,6 +27,13 @@
 <% if user_signed_in? && current_user == @event.creator %>
 <div class="settings">
   <h3>Settings</h3>
+  <div class="field">
+    <p>Invite:</p>
+    <%= form_with model: @event url: event_rsvps_path(@event), method: :post do |form| %>
+      <%= form.text_field :email %>
+      <%= form.submit "Send" %>
+    <% end %>
+  </div>
   <div class="link"><%= link_to "Edit event", edit_event_path %></div>
   <div class="link"><%= link_to "Delete event", event_path, data: {turbo_method: :delete } %></div>
 </div>
